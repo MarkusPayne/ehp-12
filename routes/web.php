@@ -8,18 +8,14 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-Route::get('/', [PublicController::class, 'home'])->name('home');
-Route::get('/about', [PublicController::class, 'about'])->name('about');
-Route::get('/advisors', [PublicController::class, 'advisors'])->name('advisors');
-Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
-Route::get('/funds', [PublicController::class, 'funds'])->name('funds');
-Route::get('/invest', [PublicController::class, 'invest'])->name('invest');
-Route::get('/legal', [PublicController::class, 'legal'])->name('legal');
-Route::get('/news', [PublicController::class, 'news'])->name('news');
+Route::get('/', fn () => view('public.home'))->name('home');
+Route::get('/about', fn () => view('public.about'))->name('about');
+Route::get('/advisors', fn () => view('public.advisors'))->name('advisors');
+Route::get('/contact', fn () => view('public.contact'))->name('contact');
+Route::get('/funds', fn () => view('public.funds'))->name('funds');
+Route::get('/invest', fn () => view('public.invest'))->name('invest');
+Route::get('/legal', fn () => view('public.legal'))->name('legal');
+Route::get('/news', fn () => view('public.news'))->name('news');
 Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/terms-conditions', [PublicController::class, 'terms'])->name('terms');
 

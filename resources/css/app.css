@@ -104,7 +104,7 @@
     }
 
     a {
-        @apply outline-hidden text-primary dark:text-gray-100;
+        @apply outline-hidden text-primary hover:text-secondary dark:text-zinc-100 dark:hover:text-white hover:font-semibold;
     }
 
 
@@ -127,21 +127,6 @@
     }
 }
 
-/*@theme {*/
-/*    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';*/
-
-/*    !*--color-zinc-50: var(--color-gray-50);*!*/
-/*    !*--color-zinc-100: var(--color-gray-100);*!*/
-/*    !*--color-zinc-200: var(--color-gray-200);*!*/
-/*    !*--color-zinc-300: var(--color-gray-300);*!*/
-/*    !*--color-zinc-400: var(--color-gray-400);*!*/
-/*    !*--color-zinc-500: var(--color-gray-500);*!*/
-/*    !*--color-zinc-600: var(--color-gray-600);*!*/
-/*    !*--color-zinc-700: var(--color-gray-700);*!*/
-/*    !*--color-zinc-800: var(--color-gray-800);*!*/
-/*    !*--color-zinc-900: var(--color-gray-900);*!*/
-/*    !*--color-zinc-950: var(--color-gray-950);*!*/
-/*}*/
 @theme {
     --color-accent: var(--color-blue-950);
     --color-accent-content: var(--color-blue-800);
@@ -167,6 +152,14 @@ address {
     @apply not-italic;
 }
 
+.btn-outline-light {
+    @apply text-zinc-200 bg-zinc-200/10 border border-zinc-200 hover:text-primary hover:bg-zinc-100 p-2 rounded-sm;
+}
+
+.btn-news {
+    @apply border border-secondary p-2 text-secondary hover:bg-secondary hover:text-zinc-200 rounded-sm  bg-transparent ;
+}
+
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;
 }
@@ -186,9 +179,8 @@ select:focus[data-flux-control] {
 } */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    line-height: 1.2;
+    @apply font-semibold mb-2 leading-8;
+
 }
 
 h1, .h1 {

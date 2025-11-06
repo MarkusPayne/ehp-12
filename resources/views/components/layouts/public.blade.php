@@ -32,9 +32,9 @@
             {{ $slot }}
         </main>
         <!-- Footer -->
-        <footer aria-labelledby="footer-heading" class="relative py-10 mt-15 bg-gray-500 text-zinc-300">
+        <footer aria-labelledby="footer-heading" class="relative py-10 mt-15 bg-gray-500 text-zinc-200 dark">
             <div class="mx-auto max-w-7xl px-6 pb-8 pt-4 lg:px-8 text-sm text-center">
-                <div class="md:grid md:grid-cols-3 md:gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 md:gap-8 gap-y-8">
                     <x-app-logo-light/>
                     <div>
                         <h6 class="">{{ __('Contact Us') }}</h6>

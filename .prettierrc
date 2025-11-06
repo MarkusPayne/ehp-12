@@ -4,6 +4,7 @@
     "singleQuote": true,
     "tabWidth": 4,
     "trailingComma": "all",
+    "tailwindStylesheet": "./resources/css/app.css",
     "plugins": [
         "prettier-plugin-blade",
         "prettier-plugin-tailwindcss"
