@@ -16,7 +16,7 @@
             ],
             "options": {
                 "parser": "blade",
-                "printWidth": 200,
+                "printWidth": 300,
                 "bracketSameLine": true
             }
         }
