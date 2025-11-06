@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class FundDocument extends Model
 {
-
     protected $fillable = [
         'fund_id',
         'document_type_id',
@@ -16,8 +15,6 @@ class FundDocument extends Model
         'file_name',
         'edit',
     ];
-
-
 
     protected function casts(): array
     {
@@ -29,5 +26,10 @@ class FundDocument extends Model
     public function fund(): BelongsTo
     {
         return $this->belongsTo(Fund::class);
+    }
+
+    public function documentType(): BelongsTo
+    {
+        return $this->belongsTo(DocumentType::class);
     }
 }

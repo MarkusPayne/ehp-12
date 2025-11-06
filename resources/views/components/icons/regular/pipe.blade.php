@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 64 512" {{ $attributes->class(['']) }}><path d="M56 0V24 488v24H8V488 24 0H56z"/></svg>

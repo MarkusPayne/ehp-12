@@ -9,6 +9,7 @@
     "dependencies": {
         "@glidejs/glide": "^3.7.1",
         "@tailwindcss/vite": "^4.1.11",
+        "@tailwindplus/elements": "^1.0.18",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
@@ -22,6 +23,10 @@
         "lightningcss-linux-x64-gnu": "^1.29.1"
     },
     "devDependencies": {
-        "@defstudio/vite-livewire-plugin": "^3.0.2"
+        "@defstudio/vite-livewire-plugin": "^3.0.2",
+        "@tailwindcss/forms": "^0.5.10",
+        "prettier": "^3.6.2",
+        "prettier-plugin-blade": "^2.1.21",
+        "prettier-plugin-tailwindcss": "^0.7.1"
     }
 }

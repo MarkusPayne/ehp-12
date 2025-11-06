@@ -8,6 +8,10 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/', [PublicController::class, 'home'])->name('home');
 Route::get('/about', [PublicController::class, 'about'])->name('about');
 Route::get('/advisors', [PublicController::class, 'advisors'])->name('advisors');
@@ -16,7 +20,6 @@ Route::get('/funds', [PublicController::class, 'funds'])->name('funds');
 Route::get('/invest', [PublicController::class, 'invest'])->name('invest');
 Route::get('/legal', [PublicController::class, 'legal'])->name('legal');
 Route::get('/news', [PublicController::class, 'news'])->name('news');
-Route::get('/news/{link}', [PublicController::class, 'newsLink'])->name('news-link');
 Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/terms-conditions', [PublicController::class, 'terms'])->name('terms');
 

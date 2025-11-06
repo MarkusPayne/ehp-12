@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Advisor;
 use App\Models\Fund;
-use App\Models\FundDocument;
 use App\Models\News;
 use App\Models\PublicContent;
 use App\Models\Team;
-use Illuminate\Support\Facades\Storage;
 
 class PublicController extends Controller
 {
@@ -59,13 +57,6 @@ class PublicController extends Controller
         return view('public.news', compact('content', 'news'));
     }
 
-    public function newsLink($link)
-    {
-        $link = 'news/'.$link;
-
-        return view('public.news-file', compact('link'));
-    }
-
     public function contact()
     {
         $advisors = Advisor::where('active', 1)->get();
@@ -106,13 +97,6 @@ class PublicController extends Controller
         $content = PublicContent::where('name', '=', 'privacy')->get()->first();
 
         return view('public.blank', compact('content', 'title'));
-    }
-
-    public function download(FundDocument $fundDocument)
-    {
-        $name = substr($fundDocument->file_name, strpos($fundDocument->file_name, '-') + 1);
-
-        return Storage::disk('public')->download($fundDocument->file_name, $name);
     }
 
     public function form()

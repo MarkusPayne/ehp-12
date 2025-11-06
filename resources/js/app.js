@@ -3,6 +3,7 @@ import { Alpine, Livewire } from '../../vendor/livewire/livewire/dist/livewire.e
 import {livewire_hot_reload} from 'virtual:livewire-hot-reload'
 // import Glide ,{ Autoplay,Controls } from '@glidejs/glide/dist/glide.modular.esm';
 import Glide from '@glidejs/glide';
+import '@tailwindplus/elements';
 livewire_hot_reload();
 Alpine.data('carousel', () => ({
 
@@ -26,5 +27,5 @@ Alpine.data('carousel', () => ({
 
 }));
 
-window.Glide = Glide;
+
 Livewire.start();

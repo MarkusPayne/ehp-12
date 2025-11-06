@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 
 class Fund extends Model
 {
+    use HasTranslations;
     protected $fillable = [
         'fund_type_id',
         'fund_location_id',
@@ -57,4 +60,9 @@ class Fund extends Model
         'web_disclaimer',
         'pdf_disclaimer',
     ];
+
+    public function documents(): Fund|HasMany
+    {
+        return $this->hasMany(FundDocument::class);
+    }
 }
