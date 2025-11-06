@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PublicController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -16,8 +15,9 @@ Route::get('/funds', fn () => view('public.funds'))->name('funds');
 Route::get('/invest', fn () => view('public.invest'))->name('invest');
 Route::get('/legal', fn () => view('public.legal'))->name('legal');
 Route::get('/news', fn () => view('public.news'))->name('news');
-Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
-Route::get('/terms-conditions', [PublicController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', fn () => view('public.privacy-policy'))->name('privacy');
+Route::get('/news', fn () => view('public.news'))->name('news');
+Route::get('/terms-conditions', fn () => view('public.terms-conditions'))->name('terms');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -1,12 +1,14 @@
 @props([
-    'title' > ''
+    'title' => null
 ])
 
 <div {{ $attributes }}>
-    <div>
-        <h4 class="uppercase">{{__($title)}}</h4>
-        <div class="hr-blue"></div>
-    </div>
+    @if($title)
+        <div>
+            <h4 class="uppercase">{{__($title)}}</h4>
+            <div class="hr-blue"></div>
+        </div>
+    @endif
     <div>
         {{ $slot ?? '' }}
     </div>

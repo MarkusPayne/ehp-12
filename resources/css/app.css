@@ -1,19 +1,16 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
-@import "@glidejs/glide/dist/css/glide.core.css";
-@import "@glidejs/glide/dist/css/glide.theme.css";
+@import '@glidejs/glide/dist/css/glide.core.css';
+@import '@glidejs/glide/dist/css/glide.theme.css';
 
-
-@plugin "@tailwindcss/forms";
+@plugin '@tailwindcss/forms';
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
 
-
 @custom-variant dark (&:where(.dark, .dark *));
-
 
 /*@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));*/
 
@@ -30,7 +27,6 @@
     --color-zinc-800: #262626;
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
-
 
     --color-primary: #1a2857;
     --color-secondary: #4579bd;
@@ -49,7 +45,6 @@
 }
 
 @layer base {
-
     *,
     ::after,
     ::before,
@@ -66,32 +61,32 @@
 }
 
 @layer components {
-    [type="text"],
-    [type="email"],
-    [type="url"],
-    [type="password"],
-    [type="number"],
-    [type="date"],
-    [type="datetime-local"],
-    [type="month"],
-    [type="search"],
-    [type="tel"],
-    [type="time"],
-    [type="week"],
+    [type='text'],
+    [type='email'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='week'],
     [multiple],
     textarea,
     select {
-        @apply inline-block w-full p-2 text-sm text-gray-600 border border-gray-300 rounded-xs dark:text-gray-200 focus:ring-0 ;
+        @apply inline-block w-full rounded-xs border border-gray-300 p-2 text-sm text-gray-600 focus:ring-0 dark:text-gray-200;
     }
 
-    [type="radio"]:focus,
-    [type="checkbox"]:focus {
-        @apply border-gray-300 rounded-xs text-primary dark:text-gray-200 focus:ring-0;
+    [type='radio']:focus,
+    [type='checkbox']:focus {
+        @apply rounded-xs border-gray-300 text-primary focus:ring-0 dark:text-gray-200;
     }
 
-    [type="radio"]:checked,
-    [type="checkbox"]:checked {
-        @apply border-gray-300 rounded-xs text-primary dark:text-gray-200 focus:ring-0;
+    [type='radio']:checked,
+    [type='checkbox']:checked {
+        @apply rounded-xs border-gray-300 text-primary focus:ring-0 dark:text-gray-200;
     }
 
     label > span {
@@ -104,9 +99,8 @@
     }
 
     a {
-        @apply outline-hidden text-primary hover:text-secondary dark:text-zinc-100 dark:hover:text-white hover:font-semibold;
+        @apply text-primary outline-hidden hover:font-semibold hover:text-secondary dark:text-zinc-100 dark:hover:text-white;
     }
-
 
     ::-webkit-scrollbar {
         @apply w-2;
@@ -114,12 +108,12 @@
 
     /* Track */
     ::-webkit-scrollbar-track {
-        @apply bg-gray-400 rounded-md
+        @apply rounded-md bg-gray-400;
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        @apply bg-gray-700 rounded-md hover:bg-gray-600
+        @apply rounded-md bg-gray-700 hover:bg-gray-600;
     }
 
     .flatpickr-current-month {
@@ -141,11 +135,11 @@
 }
 
 p {
-    @apply text-wrap pb-5;
+    @apply pb-5 text-wrap;
 }
 
 ul {
-    @apply list-disc pl-10 ;
+    @apply list-disc pl-10;
 }
 
 address {
@@ -153,11 +147,11 @@ address {
 }
 
 .btn-outline-light {
-    @apply text-zinc-200 bg-zinc-200/10 border border-zinc-200 hover:text-primary hover:bg-zinc-100 p-2 rounded-sm;
+    @apply rounded-sm border border-zinc-200 bg-zinc-200/10 p-2 text-zinc-200 hover:bg-zinc-100 hover:text-primary;
 }
 
 .btn-news {
-    @apply border border-secondary p-2 text-secondary hover:bg-secondary hover:text-zinc-200 rounded-sm  bg-transparent ;
+    @apply rounded-sm border border-secondary bg-transparent p-2 text-secondary hover:bg-secondary hover:text-zinc-200;
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
@@ -171,39 +165,54 @@ address {
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground outline-hidden;
 }
 
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    @apply font-semibold mb-2 leading-8;
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    @apply mb-2 leading-8 font-semibold;
 }
 
-h1, .h1 {
+h1,
+.h1 {
     font-size: 2.5rem;
 }
 
-h2, .h2 {
+h2,
+.h2 {
     font-size: 2rem;
 }
 
-h3, .h3 {
+h3,
+.h3 {
     font-size: 1.75rem;
 }
 
-h4, .h4 {
+h4,
+.h4 {
     font-size: 1.5rem;
 }
 
-h5, .h5 {
+h5,
+.h5 {
     font-size: 1.25rem;
 }
 
-h6, .h6 {
+h6,
+.h6 {
     font-size: 1rem;
 }
 

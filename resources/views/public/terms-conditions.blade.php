@@ -1,8 +1,8 @@
 <x-layouts.public>
-    <x-page-header :image-url="asset('images/headers/header5.jpg')" title="Legal and Proxy"/>
+    <x-page-header :image-url="asset('images/headers/header5.jpg')" title="Terms and Conditions"/>
     <x-page-section>
         <x-page-section-content>
-            @content('legal')
+            @content('terms')
         </x-page-section-content>
     </x-page-section>
 </x-layouts.public>
