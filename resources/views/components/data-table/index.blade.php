@@ -5,27 +5,22 @@
      'overlay' => true,
 ])
 <div class="overflow-visible bg-white dark:bg-gray-800" x-data="{ showExport: @js($showExport) }">
-    {{-- <div wire:loading.delay.long class="absolute inset-0 bg-white opacity-50"> --}}
-    {{-- <div wire:loading.flex class="flex justify-center items-center absolute inset-0"> --}}
-    {{-- <x-icon.spinner class="text-primary-600"/> --}}
-    {{-- </div> --}}
-    {{-- </div> --}}
-
-    <div class="flex items-center justify-between pb-2">
-        <div>
-            <x-input.select wire:model.live="perPage">
-                @foreach($this->perPageOptions as $option)
-                    <option value="{{$option}}"
-                            wire:key="datatable-cnt-{{$option}}">{{$option}}</option>
-                @endforeach
-
-            </x-input.select>
+    <div class="flex-col flex  sm:flex-row items-center justify-between pb-2 gap-x-4 ">
+        <div class="min-w-15 grid grid-cols-12 w-full  sm:w-auto">
+            <x-input.group for="funds.fund_type_id" size="12">
+                <x-input.select wire:model.live="perPage">
+                    @foreach($this->perPageOptions as $option)
+                        <option value="{{$option}}"
+                                wire:key="datatable-cnt-{{$option}}">{{$option}}</option>
+                    @endforeach
+                </x-input.select>
+            </x-input.group>
         </div>
-        <div class="flex items-center justify-between gap-x-4 pb-3">
+        <div class="flex items-center justify-between gap-x-4 grow w-full">
             {{ $extraHeading ?? null }}
 
             <div x-show="showExport">
-                <x-icons icon="download" class="cursor-pointer text-primary-600" wire:click="export" />
+                <x-icons icon="download" class="cursor-pointer text-primary-600" wire:click="export"/>
             </div>
         </div>
     </div>

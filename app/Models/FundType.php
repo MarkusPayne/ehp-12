@@ -4,22 +4,21 @@ namespace App\Models;
 
 use App\Traits\Model\SelectOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
-class DocumentType extends Model
+class FundType extends Model
 {
     use HasTranslations;
     use SelectOptions;
 
     protected $fillable = [
-        'fund_type_id',
-        'document_type_name',
+        'name',
         'description',
         'active',
-        'hide',
     ];
 
-    public array $translatable = ['document_type_name', 'description'];
+    public array $translatable = ['name', 'description'];
 
     protected static function booted(): void
     {
@@ -30,7 +29,11 @@ class DocumentType extends Model
     {
         return [
             'active' => 'boolean',
-            'hide' => 'boolean',
         ];
+    }
+
+    public function funds(): HasMany|FundType
+    {
+        return $this->hasMany(Fund::class);
     }
 }

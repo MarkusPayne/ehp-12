@@ -6,11 +6,33 @@
     }">
     <x-data-table>
         <x-slot:extraHeading>
-            <x-input.text wire:model.debounce.500ms="searchTerm" placeholder="Search by fund name or document name"/>
+            <div class="grid grid-cols-12 gap-4 w-full">
+                <x-input.group for="funds.fund_type_id" size="4">
+                    <x-input.select wire:model.live="funds.fund_type_id" placeholder="Fund Type (All)">
+                        @foreach (\App\Models\FundType::getOptions() as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-input.select>
+                </x-input.group>
+                <x-input.group for="fund_documents.fund_id" size="4">
+                    <x-input.select wire:model.live="fund_documents.fund_id" placeholder="Fund Name (All)">
+                        @foreach (\App\Models\Fund::getOptions() as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-input.select>
+                </x-input.group>
+                <x-input.group for="fund_documents.document_type_id" size="4">
+                    <x-input.select wire:model.live="fund_documents.document_type_id" placeholder="Document Type (All)">
+                        @foreach (\App\Models\DocumentType::getOptions(['sortBy' => 'document_type_name','value' => 'document_type_name']) as $value => $label)
+                            <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-input.select>
+                </x-input.group>
+            </div>
         </x-slot:extraHeading>
         <x-data-table.header>
-            <x-data-table.row>
-                <x-data-table.th sort-field="fund_name">Fund Name</x-data-table.th>
+            <x-data-table.row class="bg-gray-300 hover:bg-gray-300">
+                <x-data-table.th class="py-3 " sort-field="fund_name">Fund Name</x-data-table.th>
                 <x-data-table.th sort-field="document_name">Document</x-data-table.th>
                 <x-data-table.th sort-field="document_type_name">Type</x-data-table.th>
             </x-data-table.row>

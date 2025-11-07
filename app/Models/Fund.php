@@ -2,13 +2,19 @@
 
 namespace App\Models;
 
+use App\Traits\Model\SelectOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
 class Fund extends Model
 {
     use HasTranslations;
+    use SelectOptions;
+
+    public static bool $activeStatus = false;
+
     protected $fillable = [
         'fund_type_id',
         'fund_location_id',
@@ -37,14 +43,6 @@ class Fund extends Model
         'nav_frequency',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'active' => 'boolean',
-            'inception_date' => 'date',
-        ];
-    }
-
     public array $translatable = [
         'name',
         'description',
@@ -61,8 +59,29 @@ class Fund extends Model
         'pdf_disclaimer',
     ];
 
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::setActiveStatus(true);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'active' => 'boolean',
+            'inception_date' => 'date',
+        ];
+    }
+
     public function documents(): Fund|HasMany
     {
         return $this->hasMany(FundDocument::class);
+    }
+
+    public function fundType(): Fund|BelongsTo
+    {
+        return $this->belongsTo(FundType::class);
     }
 }

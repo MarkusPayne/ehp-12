@@ -19,6 +19,21 @@ Route::get('/privacy-policy', fn () => view('public.privacy-policy'))->name('pri
 Route::get('/news', fn () => view('public.news'))->name('news');
 Route::get('/terms-conditions', fn () => view('public.terms-conditions'))->name('terms');
 
+Route::get('/set-locale/{locale}', function ($locale) {
+
+    session(['locale' => $locale]);
+    switch ($locale) {
+        case 'fr':
+            session(['toggle_locale' => 'English']);
+            break;
+        default:
+            session(['toggle_locale' => 'French']);
+            break;
+    }
+
+    return redirect()->back();
+})->name('set-locale');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

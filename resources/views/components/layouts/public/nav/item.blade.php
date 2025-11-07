@@ -1,6 +1,5 @@
 @props([
     "route" => false,
-
     "routeParameters" => null,
 ])
 <a

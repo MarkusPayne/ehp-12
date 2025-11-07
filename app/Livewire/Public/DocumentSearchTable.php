@@ -6,6 +6,7 @@ use App\Livewire\DataTable;
 use App\Models\FundDocument;
 use App\Traits\WithSearch;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\App;
 
 class DocumentSearchTable extends DataTable
 {
@@ -21,7 +22,7 @@ class DocumentSearchTable extends DataTable
 
     public function mount(): void
     {
-
+        $locale = App::currentLocale();
         $this->filters = [
             'fund_documents.fund_id' => '=',
             'funds.fund_type_id' => '=',

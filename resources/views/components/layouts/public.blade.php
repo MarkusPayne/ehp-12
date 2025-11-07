@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html
-    lang="{{ app()->getLocale() }}"
-    class="h-full bg-white antialiased"
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+      class=" h-full bg-white antialiased"
 >
 <head>
     <meta charset="utf-8"/>
@@ -27,10 +26,11 @@
             <x-layouts.public.desktop-menu/>
             <x-layouts.public.mobile-menu/>
         </header>
-
+        {{ app()->getLocale() }}
         <main class="grow text-zinc-700 dark:text-gray-200">
             {{ $slot }}
         </main>
+
         <!-- Footer -->
         <footer aria-labelledby="footer-heading" class="relative py-10 mt-15 bg-gray-500 text-zinc-200 dark">
             <div class="mx-auto max-w-7xl px-6 pb-8 pt-4 lg:px-8 text-sm text-center">
