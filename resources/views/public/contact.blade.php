@@ -1,3 +1,4 @@
+@php use App\Facades\PublicContentService; @endphp
 <x-layouts.public>
     <x-page-header :image-url="asset('images/headers/header10.jpg')" title="Contact"/>
     <x-page-section>
@@ -15,21 +16,21 @@
                                          class="text-primary">info@ehpfunds.com</a>
                 </p>
             </x-page-section-content>
-            @foreach(\App\Facades\PublicContentService::getLocations() as $location)
+            @foreach(PublicContentService::getLocations() as $location)
                 <x-page-section-content :title="$location->name">
                     @foreach($location->advisors as $advisor)
                         <x-advisor-list :$advisor/>
                     @endforeach
                 </x-page-section-content>
             @endforeach
-           
+
         </div>
     </x-page-section>
     <x-page-section>
         <x-page-section-content title="Office">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.842604577897!2d-79.39553858487332!3d43.67224315921782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34ae7eaeb499%3A0xca434ec0e46dc5ed!2sehp+FUNDS!5e0!3m2!1sen!2sca!4v1551149595117"
-                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                width="100%" height="450" style="border:0" allowfullscreen></iframe>
         </x-page-section-content>
     </x-page-section>
 </x-layouts.public>
