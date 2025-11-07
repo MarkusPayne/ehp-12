@@ -33,11 +33,13 @@ class DocumentSearchTable extends DataTable
 
     public function tableQuery(): Builder
     {
-        return FundDocument::query()
+        $query = FundDocument::query()
             ->with(['fund', 'documentType'])
             ->join('funds', 'funds.id', '=', 'fund_documents.fund_id')
             ->join('document_types', 'document_types.id', '=', 'fund_documents.document_type_id')
             ->select('fund_documents.*', 'funds.name as fund_name', 'document_types.document_type_name as document_type_name');
+
+        return $this->applySearch($query);
 
     }
 }

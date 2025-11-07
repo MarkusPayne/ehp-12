@@ -8,21 +8,22 @@
         <x-slot:extraHeading>
             <div class="grid grid-cols-12 gap-4 w-full">
                 <x-input.group for="funds.fund_type_id" size="4">
-                    <x-input.select wire:model.live="funds.fund_type_id" placeholder="Fund Type (All)">
+                    <x-input.select wire:model.live="search.funds.fund_type_id" placeholder="Fund Type">
                         @foreach (\App\Models\FundType::getOptions() as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
                     </x-input.select>
                 </x-input.group>
                 <x-input.group for="fund_documents.fund_id" size="4">
-                    <x-input.select wire:model.live="fund_documents.fund_id" placeholder="Fund Name (All)">
+                    <x-input.select wire:model.live="search.fund_documents.fund_id" placeholder="Fund Name">
                         @foreach (\App\Models\Fund::getOptions() as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
                     </x-input.select>
                 </x-input.group>
                 <x-input.group for="fund_documents.document_type_id" size="4">
-                    <x-input.select wire:model.live="fund_documents.document_type_id" placeholder="Document Type (All)">
+                    <x-input.select wire:model.live="search.fund_documents.document_type_id"
+                                    placeholder="Document Type">
                         @foreach (\App\Models\DocumentType::getOptions(['sortBy' => 'document_type_name','value' => 'document_type_name']) as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach

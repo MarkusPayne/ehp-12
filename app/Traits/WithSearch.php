@@ -22,8 +22,6 @@ trait WithSearch
     public function clearSearch(): void
     {
         $this->reset('search');
-        // $this->dispatch('date-reset')->self();
-        // $this->dispatch('multiselect-reset')->self();
     }
 
     public function applySearch($query)

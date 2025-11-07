@@ -10,7 +10,7 @@
     {{ $attributes->merge(['class' => 'pr-8 dark:text-gray-100 dark:bg-gray-500']) }} >
 
     @if ($placeholder)
-        <option value=""> -- {{ __($placeholder) }} --</option>
+        <option value="">{{ __($placeholder) }}</option>
     @else
         @if ($showEmpty)
             <option></option>
