@@ -13,8 +13,6 @@ class Fund extends Model
     use HasTranslations;
     use SelectOptions;
 
-    public static bool $activeStatus = false;
-
     protected $fillable = [
         'fund_type_id',
         'fund_location_id',
@@ -59,9 +57,6 @@ class Fund extends Model
         'pdf_disclaimer',
     ];
 
-    /**
-     * The "booted" method of the model.
-     */
     protected static function booted(): void
     {
         static::setActiveStatus(true);
@@ -75,13 +70,18 @@ class Fund extends Model
         ];
     }
 
-    public function documents(): Fund|HasMany
+    public function fundDocuments(): HasMany
     {
         return $this->hasMany(FundDocument::class);
     }
 
-    public function fundType(): Fund|BelongsTo
+    public function fundType(): BelongsTo
     {
         return $this->belongsTo(FundType::class);
+    }
+
+    public function fundLocation(): BelongsTo
+    {
+        return $this->belongsTo(FundLocation::class);
     }
 }

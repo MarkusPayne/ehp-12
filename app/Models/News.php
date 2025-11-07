@@ -19,7 +19,9 @@ class News extends Model
         'link',
         'active',
     ];
+
     public array $translatable = ['title', 'sub_title', 'blurb'];
+
     protected function casts(): array
     {
         return [

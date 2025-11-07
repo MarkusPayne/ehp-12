@@ -11,7 +11,7 @@ class NewsType extends Model
         'news_type_name',
     ];
 
-    public function news(): NewsType|HasMany
+    public function news(): HasMany
     {
         return $this->hasMany(News::class);
     }

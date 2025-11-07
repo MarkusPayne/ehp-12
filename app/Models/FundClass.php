@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class FundClass extends Model
 {
@@ -19,24 +20,34 @@ class FundClass extends Model
         'trailer',
         'minimum_initial',
         'minimum_additional',
-        'registered_eligble',
+        'registered_eligible',
         'active',
         'sort_order',
     ];
+
+    public array $translatable = ['fund_class_name', 'currency'];
 
     protected function casts(): array
     {
         return [
             'inception_date' => 'date',
-            'registered_eligble' => 'boolean',
+            'registered_eligible' => 'boolean',
             'active' => 'boolean',
         ];
     }
 
-    public $translatable = ['fund_class_name', 'currency'];
-
     public function fund(): BelongsTo
     {
         return $this->belongsTo(Fund::class);
+    }
+
+    public function fundClassNavs(): HasMany
+    {
+        return $this->hasMany(FundClassNav::class);
+    }
+
+    public function fundClassMonthlys(): HasMany
+    {
+        return $this->hasMany(FundClassMonthly::class);
     }
 }
