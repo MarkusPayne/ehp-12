@@ -24,10 +24,10 @@ class DocumentSearchTable extends DataTable
     {
         $locale = App::currentLocale();
         $this->filters = [
-            'fund_documents.fund_id' => '=',
-            'funds.fund_type_id' => '=',
+            'fund_documents.fund_id' => '=', 'funds.fund_type_id' => '=',
             'fund_documents.document_type_id' => '=',
         ];
+
 
     }
 

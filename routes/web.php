@@ -4,14 +4,17 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
+use App\Models\Fund;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
+// Route::get('/fund-detail/{fundId}', FundDetail::class)->name('fund-detail');
 Route::get('/', fn () => view('public.home'))->name('home');
 Route::get('/about', fn () => view('public.about'))->name('about');
 Route::get('/advisors', fn () => view('public.advisors'))->name('advisors');
 Route::get('/contact', fn () => view('public.contact'))->name('contact');
 Route::get('/funds', fn () => view('public.funds'))->name('funds');
+Route::get('/fund-detail/{fund}', fn (Fund $fund) => view('public.fund-detail', ['fund' => $fund]))->name('fund-detail');
 Route::get('/invest', fn () => view('public.invest'))->name('invest');
 Route::get('/legal', fn () => view('public.legal'))->name('legal');
 Route::get('/news', fn () => view('public.news'))->name('news');

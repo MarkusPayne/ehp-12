@@ -1,3 +1,3 @@
-<div {{ $attributes->class(['max-h-10 h-6 sm:h-9']) }}>
-    <img src="/images/logo.png"  alt="{{config('app.name')}}" class="h-full"/>
+<div {{ $attributes->class(['h-6 max-h-10 sm:h-9']) }}>
+    <img src="{{ asset('/images/logo.png') }}" alt="{{ config('app.name') }}" class="h-full" />
 </div>

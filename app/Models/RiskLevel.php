@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Model\SelectOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
@@ -9,6 +10,7 @@ use Spatie\Translatable\HasTranslations;
 class RiskLevel extends Model
 {
     use HasTranslations;
+    use SelectOptions;
 
     protected $fillable = [
         'name',
@@ -18,6 +20,11 @@ class RiskLevel extends Model
     ];
 
     public array $translatable = ['name', 'description'];
+
+    protected static function booted(): void
+    {
+        static::setActiveStatus(true);
+    }
 
     protected function casts(): array
     {

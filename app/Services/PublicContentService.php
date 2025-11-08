@@ -8,14 +8,15 @@ use App\Models\News;
 use App\Models\PublicContent;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class PublicContentService
 {
     public function getContent(string $name): ?string
     {
-        return PublicContent::query()
+        return Str::replace('<p>&nbsp;</p>', '', PublicContent::query()
             ->where('name', $name)
-            ->first()?->content;
+            ->first()?->content);
     }
 
     public function getTeam(): Collection

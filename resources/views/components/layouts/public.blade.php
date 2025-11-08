@@ -14,6 +14,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap"
         rel="stylesheet">
+    <script defer src="https://unpkg.com/@alpinejs/ui@3.15.1/dist/cdn.min.js"></script>
+
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -21,12 +23,11 @@
 </head>
 <body class="h-full bg-white font-sans antialiased  min-vh-100">
 <div class="h-full font-sans text-zinc-700 antialiased ">
-    <div class=" min-h-screen  flex flex-col">
-        <header class=" inset-x-0  z-50 " x-data="{ open: false }" x-cloak>
+    <div class=" min-h-screen  flex flex-col" x-data="navigation">
+        <header class=" inset-x-0 top-0 z-50 sticky bg-gray-100 bg-opacity-95 " x-data="{ open: false }" x-cloak>
             <x-layouts.public.desktop-menu/>
             <x-layouts.public.mobile-menu/>
         </header>
-        {{ app()->getLocale() }}
         <main class="grow text-zinc-700 dark:text-gray-200">
             {{ $slot }}
         </main>

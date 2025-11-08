@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Traits\Model\SelectOptions;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -60,6 +62,12 @@ class Fund extends Model
     protected static function booted(): void
     {
         static::setActiveStatus(true);
+    }
+
+    #[Scope]
+    protected function active(Builder $query): void
+    {
+        $query->where('active', 1);
     }
 
     protected function casts(): array
