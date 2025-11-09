@@ -25,7 +25,7 @@
                 x-menu:button
                 x-on:mouseenter="clearClose()"
                 x-on:mouseleave="scheduleClose()"
-                {{ $attributes->class(['-mx-3 block rounded-lg px-3 py-2 text-base leading-7 font-medium text-zinc-500 hover:text-primary sm:mx-0 sm:text-sm dark:text-zinc-200','!font-semibold !text-primary' => request()->route()->getName() == $route,]) }}>
+                {{ $attributes->class(['-mx-3 block rounded-sm bg-gray-100 px-3 py-2 text-base leading-7 font-medium text-zinc-500 hover:text-primary sm:mx-0 sm:text-sm dark:text-zinc-200','!font-semibold !text-primary' => request()->route()->getName() == $route,]) }}>
                 <span class="flex items-center">
                     {{ __($menuTitle) }}
                     <x-icons icon="chevron-down" class="h-3 w-3" />
