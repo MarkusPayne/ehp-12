@@ -23,5 +23,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('content', function ($expression) {
             return "<?php echo \\App\\Facades\\PublicContentService::getContent($expression); ?>";
         });
+        Blade::directive(
+            'prettyDate',
+            function ($value) {
+                return "<?php if($value) echo ($value)->format('M d, Y'); else echo 'Not Set';?>";
+            }
+        );
     }
 }

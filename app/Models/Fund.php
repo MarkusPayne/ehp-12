@@ -78,6 +78,16 @@ class Fund extends Model
         ];
     }
 
+    public function fundClasses(): HasMany
+    {
+        return $this->hasMany(FundClass::class);
+    }
+
+    public function riskLevel(): BelongsTo
+    {
+        return $this->belongsTo(RiskLevel::class);
+    }
+
     public function fundDocuments(): HasMany
     {
         return $this->hasMany(FundDocument::class);

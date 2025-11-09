@@ -5,5 +5,5 @@
             {!! $fund?->overview !!}
         </x-page-section-content>
     </x-page-section>
-    <x-page-section>graph</x-page-section>
+    <livewire:public.fund-class-detail :fundId="$fund?->id" />
 </x-layouts.public>

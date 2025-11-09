@@ -35,9 +35,9 @@ Alpine.data('navigation', () => ({
     },
 
     scrollToSection(sectionId) {
+        this.activeSection = sectionId;
         const element = document.getElementById(sectionId);
         if (element) {
-            this.activeSection = sectionId;
             this.open = false;
             const offset = 80; // Adjust based on your header height
             const elementPosition = element.getBoundingClientRect().top;

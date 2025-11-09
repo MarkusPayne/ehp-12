@@ -1,10 +1,16 @@
 <x-layouts.public.nav.item route="home">Home</x-layouts.public.nav.item>
-<x-layouts.public.nav.dropdown route="about" menu-title="About" x-cloak>
+<x-layouts.public.nav.dropdown route="about" menu-title="About">
     <x-layouts.public.nav.item route="about" section="about-firm" x-on:click="scrollToSection('about-firm')">Firm</x-layouts.public.nav.item>
     <x-layouts.public.nav.item route="about" section="about-process" x-on:click="scrollToSection('about-process')">Process</x-layouts.public.nav.item>
     <x-layouts.public.nav.item route="about" section="about-management-team" x-on:click="scrollToSection('about-management-team')">Management Team</x-layouts.public.nav.item>
     <x-layouts.public.nav.item route="about" section="about-careers" x-on:click="scrollToSection('about-careers')">Careers</x-layouts.public.nav.item>
 </x-layouts.public.nav.dropdown>
+
+<x-layouts.public.nav.dropdown route="funds" menu-title="Funds">
+    <x-layouts.public.nav.item route="funds">Fund Finder</x-layouts.public.nav.item>
+    <x-layouts.public.nav.item route="about">Careers</x-layouts.public.nav.item>
+</x-layouts.public.nav.dropdown>
+
 <x-layouts.public.nav.item route="funds">Funds</x-layouts.public.nav.item>
 <x-layouts.public.nav.item route="advisors">Advisors</x-layouts.public.nav.item>
 <x-layouts.public.nav.item route="invest">Invest</x-layouts.public.nav.item>

@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,6 +30,12 @@ class FundClass extends Model
 
     public array $translatable = ['fund_class_name', 'currency'];
 
+    #[Scope]
+    protected function active(Builder $query): void
+    {
+        $query->where('active', 1);
+    }
+
     protected function casts(): array
     {
         return [
@@ -34,6 +43,13 @@ class FundClass extends Model
             'registered_eligible' => 'boolean',
             'active' => 'boolean',
         ];
+    }
+
+    protected function lastNav(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->fundClassNavs()->latest()->first(),
+        );
     }
 
     public function fund(): BelongsTo
@@ -46,7 +62,7 @@ class FundClass extends Model
         return $this->hasMany(FundClassNav::class);
     }
 
-    public function fundClassMonthlys(): HasMany
+    public function fundClassMonthly(): HasMany
     {
         return $this->hasMany(FundClassMonthly::class);
     }
