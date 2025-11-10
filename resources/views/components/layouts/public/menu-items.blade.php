@@ -11,7 +11,6 @@
     <x-layouts.public.nav.item route="about">Careers</x-layouts.public.nav.item>
 </x-layouts.public.nav.dropdown>
 
-<x-layouts.public.nav.item route="funds">Funds</x-layouts.public.nav.item>
 <x-layouts.public.nav.item route="advisors">Advisors</x-layouts.public.nav.item>
 <x-layouts.public.nav.item route="invest">Invest</x-layouts.public.nav.item>
 <x-layouts.public.nav.item route="news">News</x-layouts.public.nav.item>
