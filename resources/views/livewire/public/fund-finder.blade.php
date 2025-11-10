@@ -25,13 +25,11 @@
     <ul class="list-none space-y-5 !ps-0 pt-10">
         @foreach ($this->funds as $fund)
             <li class="cursor-pointer overflow-hidden bg-gray-100 px-4 py-4 hover:bg-blue-200/30" wire:key="{{ $fund->id }}" x-on:click="Livewire.navigate('{{ route('fund-detail', ['fund' => $fund->id]) }}')">
-                {{-- <a href="{{ route('fund-detail', ['fund' => $fund->id]) }}"> --}}
                 <div>
                     <h4 class="!font-medium text-primary">{{ __($fund->name) }}</h4>
                     <div class="hr-blue"></div>
                     <div>{!! __($fund->description) !!}</div>
                 </div>
-                {{-- </a> --}}
             </li>
         @endforeach
     </ul>
