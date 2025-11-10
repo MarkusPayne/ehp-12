@@ -17,7 +17,7 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('ehp.hexcode.ca')
+host('ehp-12.hexcode.ca')
     ->set('remote_user', 'mark')
     ->set('branch', 'main')
     ->set('deploy_path', '~/www/ehp-12');
