@@ -28,12 +28,12 @@ class DocumentSearchTable extends DataTable
             'fund_documents.document_type_id' => '=',
         ];
 
-
     }
 
     public function tableQuery(): Builder
     {
         $query = FundDocument::query()
+            ->where('fund_documents.language', app()->getLocale())
             ->with(['fund', 'documentType'])
             ->join('funds', 'funds.id', '=', 'fund_documents.fund_id')
             ->join('document_types', 'document_types.id', '=', 'fund_documents.document_type_id')

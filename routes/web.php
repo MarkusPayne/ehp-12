@@ -36,6 +36,8 @@ Route::get('/set-locale/{locale}', function ($locale) {
             session(['js_locale' => 'en-CA']);
             break;
     }
+    // clear any cached translation values
+    Cache::flush();
 
     return redirect()->back();
 })->name('set-locale');
