@@ -1,7 +1,7 @@
 @props([
     'error' => false,
 ])
-<div class="p-4 border-2 border-dashed rounded-lg">
+<div class="rounded-lg border-2 border-dashed p-4">
     <div
         x-data="{ isDragging: false, isUploading: false, progress: 0 }"
         x-on:livewire-upload-start="isUploading = true"
@@ -19,19 +19,18 @@
             )
         }
         "
-        class="relative flex items-center justify-center h-40 transition-colors duration-300 bg-gray-100 border-2 border-gray-300 rounded-lg w-100 grow"
+        class="relative flex h-40 w-100 grow items-center justify-center rounded-lg border-2 border-gray-300 bg-gray-100 transition-colors duration-300"
         :class="isDragging ? 'border-primary-500 bg-blue-100' : ''">
         <div class="text-center">
             <p class="mb-2 text-gray-600">Drag and drop your files here</p>
             <p class="text-sm text-gray-500">Or</p>
 
-            <x-button.primary @click="$refs.fileInput.click()">Browse</x-button.primary>
-           
+            <x-buttons.primary @click="$refs.fileInput.click()">Browse</x-buttons.primary>
+
             <div x-show="isUploading">
                 <progress max="100" x-bind:value="progress"></progress>
             </div>
-            <input type="file" id="fileInput" x-ref="fileInput" class="sr-only" multiple hidden
-                   wire:model.live="uploads">
+            <input type="file" id="fileInput" x-ref="fileInput" class="sr-only" multiple hidden wire:model.live="uploads" />
             <x-input.error :error="$error" />
         </div>
     </div>
