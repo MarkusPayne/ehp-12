@@ -1,7 +1,9 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
+@import 'highcharts/css/highcharts.css';
 @import '@glidejs/glide/dist/css/glide.core.css';
 @import '@glidejs/glide/dist/css/glide.theme.css';
+
 
 @plugin '@tailwindcss/forms';
 
@@ -232,4 +234,10 @@ h6,
     border: 0;
     width: 55px;
     border-bottom: 7px solid #4579bd;
+}
+
+
+.highcharts-title {
+    @apply !text-center !font-medium !text-gray-200 !leading-8 !font-sans;
+
 }

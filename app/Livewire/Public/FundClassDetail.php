@@ -13,7 +13,7 @@ class FundClassDetail extends Component
 
     public ?int $fundClassId = null;
 
-    #[Computed]
+    #[Computed(persist: true)]
     public function fund(): ?Fund
     {
         return Fund::find($this->fundId)->load(['fundClasses' => fn ($query) => $query->active()->orderBy('sort_order')]);
@@ -22,11 +22,10 @@ class FundClassDetail extends Component
     #[Computed]
     public function fundClass(): ?FundClass
     {
-
         if (! $this->fundClassId) {
             $this->fundClassId = $this->fund?->fundClasses?->first()->id;
         }
 
-        return FundClass::find($this->fundClassId);
+        return FundClass::find($this->fundClassId)->append(['growth', 'returns']);
     }
 }

@@ -25,12 +25,15 @@ Route::get('/terms-conditions', fn () => view('public.terms-conditions'))->name(
 Route::get('/set-locale/{locale}', function ($locale) {
 
     session(['locale' => $locale]);
+
     switch ($locale) {
         case 'fr':
             session(['toggle_locale' => 'English']);
+            session(['js_locale' => 'fr-CA']);
             break;
         default:
             session(['toggle_locale' => 'French']);
+            session(['js_locale' => 'en-CA']);
             break;
     }
 

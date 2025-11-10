@@ -1,10 +1,116 @@
 import { Alpine, Livewire } from '../../vendor/livewire/livewire/dist/livewire.esm';
-
 import { livewire_hot_reload } from 'virtual:livewire-hot-reload';
+import Highcharts from 'highcharts';
+import HighchartsAccessibility from 'highcharts/modules/accessibility';
 import Glide from '@glidejs/glide';
 import '@tailwindplus/elements';
 
+window.Highcharts = Highcharts;
+function initializeLibraries() {
+    // Initialize Highcharts modules with the core instance
+    try {
+        if (typeof HighchartsAccessibility === 'function') HighchartsAccessibility(Highcharts);
+    } catch (e) {
+        console.error('[Highcharts] Module initialization failed:', e);
+    }
+
+    // Expose to window AFTER modules is initialized
+    window.Highcharts = Highcharts;
+    // const html = document.documentElement;
+    // if (html.getAttribute('lang') === 'fr') {
+    //     window.intl = 'fr-Latn-CA';
+    // } else {
+    //     window.intl = 'en-US';
+    // }
+}
+initializeLibraries();
+
 livewire_hot_reload();
+
+function formatCurrency(val) {
+    return new Intl.NumberFormat(window.appLocale, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+        style: 'currency',
+        currency: 'CAD',
+    }).format(val);
+}
+
+function formatOrdinal(n) {
+    const s = ['th', 'st', 'nd', 'rd'];
+    const v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function formatDateLabel(x) {
+    const d = new Date(x);
+    return `${d.toLocaleString(window.appLocale, { month: 'long' })} ${formatOrdinal(d.getDate())}, ${d.getFullYear()}`;
+}
+Alpine.data('lineChart', (seriesData) => ({
+    init() {
+        Highcharts.chart(this.$el, {
+            title: {
+                text: 'Growth of $100,000',
+            },
+            credits: false,
+
+            subtitle: false,
+
+            xAxis: {
+                type: 'datetime',
+            },
+            tooltip: {
+                formatter() {
+                    return `${formatDateLabel(this.x)}: ${formatCurrency(this.y)}`;
+                },
+                useHTML: false,
+            },
+            yAxis: {
+                labels: {
+                    formatter: function () {
+                        return formatCurrency(this.value);
+                    },
+                    style: { fontSize: '12px' },
+                },
+                title: {
+                    text: undefined,
+                },
+            },
+            plotOptions: {
+                series: {
+                    marker: {
+                        enabled: false,
+                    },
+                    color: '#1a2857',
+                },
+            },
+
+            series: [
+                {
+                    name: 'Investment',
+                    showInLegend: false,
+                    data: seriesData,
+                },
+            ],
+            responsive: {
+                rules: [
+                    {
+                        condition: {
+                            maxWidth: 500,
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom',
+                            },
+                        },
+                    },
+                ],
+            },
+        });
+    },
+}));
 
 Alpine.data('carousel', () => ({
     init() {

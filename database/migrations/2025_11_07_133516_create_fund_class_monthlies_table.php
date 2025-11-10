@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('fund_class_id')->constrained('fund_classes');
             $table->date('date');
-            $table->decimal('nav');
+            $table->decimal('nav', 10, 4);
             $table->timestamps();
         });
     }

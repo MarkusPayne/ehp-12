@@ -14,6 +14,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap"
         rel="stylesheet">
+    <script>
+        window.appLocale = @json(session('js_locale','en-CA'));
+    </script>
     <script defer src="https://unpkg.com/@alpinejs/ui@3.15.1/dist/cdn.min.js"></script>
 
     @livewireStyles

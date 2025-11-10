@@ -12,11 +12,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('fund_class_id')->constrained('fund_classes');
             $table->date('nav_date');
-            $table->decimal('nav');
-            $table->decimal('daily_distribution');
-            $table->decimal('daily_dividend');
-            $table->decimal('percent_change');
-            $table->decimal('penny_change');
+            $table->decimal('nav', 10, 4);
+            $table->decimal('daily_distribution', 10, 4);
+            $table->decimal('daily_dividend', 10, 4);
+            $table->decimal('percent_change', 10, 4);
+            $table->decimal('penny_change', 10, 4);
             $table->integer('active');
             $table->timestamps();
         });
